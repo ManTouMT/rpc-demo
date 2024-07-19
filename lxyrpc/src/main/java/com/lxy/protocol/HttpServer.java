@@ -35,7 +35,8 @@ public class HttpServer {
         Connector connector = new Connector();
         connector.setPort(port);
         service.addConnector(connector);
-
+        tomcat.addServlet(contextPath, "dispatcher", new DispatcherServlet());
+        context.addServletMappingDecoded("/*", "dispatcher");
         try {
             tomcat.start();
         } catch (LifecycleException e) {
