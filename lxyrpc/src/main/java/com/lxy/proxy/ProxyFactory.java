@@ -1,13 +1,11 @@
-package proxy;
+package com.lxy.proxy;
 
+import com.lxy.common.Invocation;
+import com.lxy.common.URL;
+import com.lxy.loadbalance.RandomLoadBalance;
 import com.lxy.protocol.HttpClient;
-import common.Invocation;
-import common.URL;
-import loadbalance.RandomLoadBalance;
-import register.RemoteRegister;
+import com.lxy.register.RemoteRegister;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.List;
 

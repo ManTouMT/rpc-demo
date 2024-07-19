@@ -1,9 +1,9 @@
 package com.lxy;
 
 import com.lxy.protocol.HttpServer;
-import common.URL;
-import register.LocalRegister;
-import register.RemoteRegister;
+import com.lxy.common.URL;
+import com.lxy.register.LocalRegister;
+import com.lxy.register.RemoteRegister;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

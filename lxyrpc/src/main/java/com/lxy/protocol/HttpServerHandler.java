@@ -1,8 +1,8 @@
 package com.lxy.protocol;
 
-import common.Invocation;
+import com.lxy.common.Invocation;
 import org.apache.commons.io.IOUtils;
-import register.LocalRegister;
+import com.lxy.register.LocalRegister;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -24,7 +24,7 @@ public class HttpServerHandler {
             String version = invocation.getVersion() == null ? "" : invocation.getVersion();
             /**
              * 怎么通过接口名快速找到实现类：本地注册 
-             * @see register.LocalRegister
+             * @see LocalRegister
              **/
             Class<?> classImpl = LocalRegister.get(interfaceName, version);
             Method method = classImpl.getMethod(invocation.getMethodName(), invocation.getParameterTypes());

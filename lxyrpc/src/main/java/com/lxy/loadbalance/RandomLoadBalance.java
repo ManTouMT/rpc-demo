@@ -1,6 +1,6 @@
-package loadbalance;
+package com.lxy.loadbalance;
 
-import common.URL;
+import com.lxy.common.URL;
 
 import java.util.List;
 import java.util.Random;

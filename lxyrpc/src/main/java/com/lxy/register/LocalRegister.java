@@ -1,4 +1,4 @@
-package register;
+package com.lxy.register;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package common;
+package com.lxy.common;
 
 import java.io.Serializable;
 

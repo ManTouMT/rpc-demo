@@ -1,9 +1,8 @@
-package register;
+package com.lxy.register;
 
-import common.URL;
+import com.lxy.common.URL;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;

@@ -1,8 +1,7 @@
 package com.lxy;
 
-import com.lxy.protocol.HttpClient;
-import common.Invocation;
-import proxy.ProxyFactory;
+import com.lxy.common.Invocation;
+import com.lxy.proxy.ProxyFactory;
 
 public class Main {
     public static void main(String[] args) {

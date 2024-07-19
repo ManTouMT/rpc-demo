@@ -1,6 +1,6 @@
 package com.lxy.protocol;
 
-import common.Invocation;
+import com.lxy.common.Invocation;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
