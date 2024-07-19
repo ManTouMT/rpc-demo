@@ -17,20 +17,17 @@ public class ProxyFactory {
 
         Object proxyInstance = Proxy.newProxyInstance(interfaceClass.getClassLoader(),
                 new Class[]{interfaceClass},
-                new InvocationHandler() {
-                    @Override
-                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                        Invocation invocation = new Invocation(interfaceClass.getName(),
-                                method.getName(),
-                                args,
-                                method.getParameterTypes());
-                        HttpClient httpClient = new HttpClient();
-                        // 服务发现
-                        List<URL> urls = RemoteRegister.get(interfaceClass.getName());
-                        // 负载均衡
-                        URL random = RandomLoadBalance.random(urls);
-                        return httpClient.send(random.getHostname(), random.getPort(), invocation);
-                    }
+                (proxy, method, args) -> {
+                    Invocation invocation = new Invocation(interfaceClass.getName(),
+                            method.getName(),
+                            args,
+                            method.getParameterTypes());
+                    HttpClient httpClient = new HttpClient();
+                    // 服务发现
+                    List<URL> urls = RemoteRegister.get(interfaceClass.getName());
+                    // 负载均衡
+                    URL random = RandomLoadBalance.random(urls);
+                    return httpClient.send(random.getHostname(), random.getPort(), invocation);
                 });
         return (T) proxyInstance;
     }
