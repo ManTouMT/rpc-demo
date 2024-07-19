@@ -28,8 +28,7 @@ public class HttpServerHandler {
              **/
             Class<?> classImpl = LocalRegister.get(interfaceName, version);
             Method method = classImpl.getMethod(invocation.getMethodName(), invocation.getParameterTypes());
-            method.setAccessible(true);
-            String result = (String) method.invoke(classImpl, invocation.getParameters());
+            String result = (String) method.invoke(classImpl.newInstance(), invocation.getParameters());
             // 写入结果
             IOUtils.write(result, resp.getOutputStream());
         } catch (IOException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException |
