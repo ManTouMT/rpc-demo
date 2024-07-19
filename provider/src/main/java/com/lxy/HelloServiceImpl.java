@@ -2,7 +2,7 @@ package com.lxy;
 
 public class HelloServiceImpl implements HelloService{
     @Override
-    public void sayHello(String something) {
-        System.out.println("Hello," + something);
+    public String sayHello(String something) {
+        return "Hello," + something;
     }
 }

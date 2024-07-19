@@ -1,5 +1,5 @@
 package com.lxy;
 
 public interface HelloService {
-    void sayHello(String something);
+    String sayHello(String something);
 }
