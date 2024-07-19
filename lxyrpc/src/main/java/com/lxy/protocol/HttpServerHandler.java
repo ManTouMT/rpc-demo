@@ -12,7 +12,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- * 类似责任链模式
+ * 对请求的处理
  **/
 public class HttpServerHandler {
     public void handler(HttpServletRequest req, HttpServletResponse resp) {
@@ -21,18 +21,19 @@ public class HttpServerHandler {
             Invocation invocation = (Invocation) new ObjectInputStream(req.getInputStream()).readObject();
             // 调用的接口名
             String interfaceName = invocation.getInterfaceName();
+            String version = invocation.getVersion() == null ? "" : invocation.getVersion();
             /**
              * 怎么通过接口名快速找到实现类：本地注册 
              * @see register.LocalRegister
              **/
-            Class<?> classImpl = LocalRegister.get(interfaceName, "1");
+            Class<?> classImpl = LocalRegister.get(interfaceName, version);
             Method method = classImpl.getMethod(invocation.getMethodName(), invocation.getParameterTypes());
             method.setAccessible(true);
             String result = (String) method.invoke(classImpl, invocation.getParameters());
             // 写入结果
             IOUtils.write(result, resp.getOutputStream());
         } catch (IOException | ClassNotFoundException | NoSuchMethodException | InvocationTargetException |
-                 IllegalAccessException e) {
+                 IllegalAccessException | InstantiationException e) {
             throw new RuntimeException(e);
         }
 

@@ -7,7 +7,11 @@ import java.util.Map;
  * 本地注册（与之对应的就是服务注册，发现等组件）
  **/
 public class LocalRegister {
-    private static Map<String, Class<?>> map = new HashMap<String, Class<?>>();
+    /**
+     * key: 接口名
+     * value：接口实现
+     **/
+    private final static Map<String, Class<?>> map = new HashMap<>();
     
     public static void register(String className, Class<?> clazz) {
         register(className, "", clazz);
@@ -25,7 +29,7 @@ public class LocalRegister {
     }
 
     public static Class<?> get(String className, String version) {
-        return map.get(className);
+        return map.get(className + version);
     }
     
 }
