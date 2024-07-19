@@ -3,6 +3,7 @@ package proxy;
 import com.lxy.protocol.HttpClient;
 import common.Invocation;
 import common.URL;
+import loadbalance.RandomLoadBalance;
 import register.RemoteRegister;
 
 import java.lang.reflect.InvocationHandler;
@@ -27,7 +28,8 @@ public class ProxyFactory {
                         // 服务发现
                         List<URL> urls = RemoteRegister.get(interfaceClass.getName());
                         // 负载均衡
-                        return httpClient.send("localhost", 8080, invocation);
+                        URL random = RandomLoadBalance.random(urls);
+                        return httpClient.send(random.getHostname(), random.getPort(), invocation);
                     }
                 });
         return (T) proxyInstance;
