@@ -3,17 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.rpc.example</groupId>
+        <artifactId>rpc-demo</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
-    <groupId>org.rpc.example</groupId>
-    <artifactId>rpc-demo</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-    <modules>
-        <module>consumer</module>
-        <module>provider</module>
-        <module>provider-common</module>
-        <module>lxyrpc</module>
-    </modules>
+    <artifactId>lxyrpc</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
@@ -21,4 +17,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>9.0.83</version>
+        </dependency>
+    </dependencies>
 </project>

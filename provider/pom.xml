@@ -23,6 +23,11 @@
             <artifactId>provider-common</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>org.rpc.example</groupId>
+            <artifactId>lxyrpc</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
 </project>
