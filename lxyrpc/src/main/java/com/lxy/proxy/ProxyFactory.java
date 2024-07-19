@@ -20,7 +20,8 @@ public class ProxyFactory {
                     Invocation invocation = new Invocation(interfaceClass.getName(),
                             method.getName(),
                             args,
-                            method.getParameterTypes());
+                            method.getParameterTypes(),
+                            "2");
                     HttpClient httpClient = new HttpClient();
                     
                     // 已经调用过的机器
